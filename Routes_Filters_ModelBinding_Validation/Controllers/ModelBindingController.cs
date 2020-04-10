@@ -21,6 +21,8 @@ namespace Routes_Filters_ModelBinding_Validation.Controllers
     public ViewResult IndexWithAddress(int id) => View(repository[id]);
 
     public ViewResult IndexNullSafe(int id) => View(repository[id] ?? repository.People.First());
+    
+    public ViewResult IndexWithCity(int id) => View(repository[id]);
 
     public ViewResult Create() => View(new Person());
 
@@ -37,5 +39,11 @@ namespace Routes_Filters_ModelBinding_Validation.Controllers
     public ViewResult NamesList(IList<string> names) => View(names ?? new List<string>());
 
     public ViewResult Address(IList<AddressSummary> addresses) => View(addresses ?? new List<AddressSummary>());
+
+    public ViewResult CreateState() => View(new State());
+        
+    [HttpPost]
+
+    public ViewResult CreateState(State model) => View("IndexWithCity", model);
   }
 }
